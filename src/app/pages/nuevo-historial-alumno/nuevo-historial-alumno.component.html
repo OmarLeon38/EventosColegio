@@ -1,0 +1,96 @@
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid animated fadeIn">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Nuevo historial alumno</h3>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+
+        <div class="row">
+            <div class="col-12">
+                <form (ngSubmit)="submit();" [formGroup]="multiBloque">
+                    <div *ngIf="bloque==1" formGroupName="datosAlumno">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-2 col-form-label">Nombre</label>
+                            <div class="col-5">
+                                <select class="form-control" [(ngModel)]="newHistorialAlumno.idAlumno" formControlName="nombre">
+                                    <option *ngFor="let datos of alumnos "value="{{datos.idAlumno}}">{{datos.nombreAlumno}}</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <!--<div class="form-group row">
+                        <label for="example-search-input" class="col-2 col-form-label" >Labor</label>
+                        <div class="col-10">
+                            <input class="form-control" type="text" name="newhistorial.laborhistorial" [(ngModel)]="newhistorial.laborhistorial" >
+                        </div>
+                    </div>-->
+                        <div class="form-group row">
+                            <label for="example-search-input" class="col-2 col-form-label">Hora de llegada</label>
+                            <div class="col-4">
+                                <input class="form-control" type="time" [(ngModel)]="newHistorialAlumno.horaLlegada" formControlName="horallegada">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div *ngIf="bloque== 2" formGroupName="datosAlumno2">
+                        <div class="form-group row">
+                            <label for="example-search-input" class="col-2 col-form-label">Hora de salida</label>
+                            <div class="col-4">
+                                <input class="form-control" type="time" [(ngModel)]="newHistorialAlumno.horaSalida" formControlName="horaSalida">
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                    </div>
+                    <div *ngIf="bloque== 3" formGroupName="datosAlumno3">
+                        <div class="form-group">
+                            <label>Comentario</label>
+                            <textarea class="form-control" rows="4"[(ngModel)]="newHistorialAlumno.comentario" formControlName="comentario"></textarea>
+                        </div>
+
+
+
+                        
+                    </div>
+                    <a (click)="btnAtras();" style="margin-right: 15px; color: white;" class="btn btn-success"
+                        *ngIf="bloque!=1">Atras</a>
+                    <button type="submit" class="btn btn-success" *ngIf="bloque !=3">Siguiente</button>
+                    <button (click)="retornarAlumnoHistorial();"class="btn btn-success" *ngIf="bloque==3">Registrar</button>
+                    <p>
+                    <pre>
+                        {{multiBloque.value | json}}
+                    </pre>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->

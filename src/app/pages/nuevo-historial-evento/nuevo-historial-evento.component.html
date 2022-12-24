@@ -1,0 +1,104 @@
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid animated fadeIn">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Nuevo historial alumno</h3>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+
+        <div class="row">
+            <div class="col-12">
+                <form (ngSubmit)="submit();" [formGroup]="multiBloque">
+                    <div *ngIf="bloque==1" formGroupName="datosEvento">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-2 col-form-label">Nombre</label>
+                            <div class="col-5">
+                                <select class="form-control" [(ngModel)]="newHistorialEvento.idEvento" formControlName="nombre">
+                                    <option *ngFor="let datos of eventos "value="{{datos.idEvento}}">{{datos.nombreEvento}}</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Detalle del evento</label>
+                            <textarea class="form-control" rows="4"[(ngModel)]="newHistorialEvento.detalleEvento" formControlName="detalleEvento"></textarea>
+                        </div>
+
+                        <!--<div class="form-group row">
+                        <label for="example-search-input" class="col-2 col-form-label" >Labor</label>
+                        <div class="col-10">
+                            <input class="form-control" type="text" name="newhistorial.laborhistorial" [(ngModel)]="newhistorial.laborhistorial" >
+                        </div>
+                    </div>-->
+                    
+
+
+                    </div>
+
+                    <div *ngIf="bloque== 2" formGroupName="datosEvento2">
+                        <div class="form-group row">
+                            <label for="example-search-input" class="col-2 col-form-label">Capacidad del evento</label>
+                            <div class="col-4">
+                                <input class="form-control" type="number" [(ngModel)]="newHistorialEvento.capacidadEvento" formControlName="capacidadEvento">
+                            </div>
+                        </div>
+
+                        
+
+
+
+
+
+
+
+
+                    </div>
+                    <div *ngIf="bloque== 3" formGroupName="datosEvento3">
+                        <div class="form-group">
+                            <label>Lugar del evento</label>
+                            <textarea class="form-control" rows="4"[(ngModel)]="newHistorialEvento.capacidadEvento" formControlName="capacidadEvento"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Grado del evento</label>
+                            <textarea class="form-control" rows="4"[(ngModel)]="newHistorialEvento.gradoEvento" formControlName="gradoEvento"></textarea>
+                        </div>
+                        
+                        
+
+
+
+                        
+                    </div>
+                    <a (click)="btnAtras();" style="margin-right: 15px; color: white;" class="btn btn-success"
+                        *ngIf="bloque!=1">Atras</a>
+                    <button type="submit" class="btn btn-success" *ngIf="bloque !=3">Siguiente</button>
+                    <button (click)="retornarEventoHistorial();"class="btn btn-success" *ngIf="bloque==3">Registrar</button>
+                    <p>
+                    <pre>
+                        {{multiBloque.value | json}}
+                    </pre>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
